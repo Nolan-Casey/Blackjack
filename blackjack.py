@@ -74,7 +74,7 @@ class Chips:      # Keep track of chips
         
     def lose_bet (self):
         self.total -= self.bet
-        
+    
         
 # FUNCTIONS
 

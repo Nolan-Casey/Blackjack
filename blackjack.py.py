@@ -66,7 +66,7 @@ class Hand:      # SHow all the cards that the dearler and player have
 class Chips:      # Keep track of chips
     
     def __init__ (self):
-        self.total = 100 
+        self.total = 0 
         self.bet = 0
         
     def win_bet (self):
@@ -82,12 +82,14 @@ def take_bet(chips):     # Ask for the user's bet
     
     while True:
         try:
-            chips.bet = int(input("How much would you like to bet? "))
+            chips.total = int(input("Dealer: How much money would you like to buy in with: $"))
+            print("\nYou have $", chips.total, "to play with." )
+            chips.bet = int(input("How much would you like to bet? $"))
         except ValueError: 
             print("Sorry! Please can you type in a number: ")
         else:
             if chips.bet > chips.total:
-                print("Your bet can't exceed 100!")
+                print("Your bet can't exceed your total amount of money!")
             else:
                 break
      
@@ -157,8 +159,9 @@ def push(player, dealer):
     
 # Gameplay
 
-while True:
-    print("Welcome to Blackjack!")
+print("Welcome to Blackjack!")
+
+while True:    
     
     # create an shuffle deck
     deck = Deck()
@@ -210,10 +213,11 @@ while True:
             
     print("\nPlayer's winnings stand at", player_chips.total)
     
-    new_game = input("Would you like to play again? Enter 'y' or 'n': ")
-    if new_game[0].lower() == 'y':
+    continue_game = input("Would you like to continue playing? Enter 'y' or 'n': ")
+    print('-' * 75)    
+    if continue_game[0].lower() == 'y':
         playing = True
-        continue
+        
     else: 
         print('Thanks for playing!')
         break
